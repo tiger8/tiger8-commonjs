@@ -1,0 +1,1 @@
+module.exports = require('./tiger8-commonjs');
