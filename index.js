@@ -1,1 +1,1 @@
-module.exports = require('./tiger8-commonjs');
+module.exports = require('./lib/tiger8-commonjs');

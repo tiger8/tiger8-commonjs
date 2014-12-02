@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{20c9bb29-615e-465a-aa09-db9b1575a7b3}</ProjectGuid>
     <ProjectHome />
-    <ProjectView>ShowAllFiles</ProjectView>
+    <ProjectView>ProjectFiles</ProjectView>
     <StartupFile>index.js</StartupFile>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
@@ -16,6 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
   <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
   <ItemGroup>
+    <Compile Include="tiger8-commonjs.js" />
     <Content Include=".gitignore" />
     <Content Include=".jshintrc" />
     <Content Include=".npmignore" />
@@ -25,11 +26,9 @@
     <Content Include="README.md" />
     <Compile Include="Gruntfile.js" />
     <Compile Include="index.js" />
-    <Compile Include="lib\tiger8-commonjs.js" />
     <Compile Include="test\tiger8-commonjs_test.js" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="lib" />
     <Folder Include="test" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />

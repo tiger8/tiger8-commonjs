@@ -1,8 +1,8 @@
 {
   "name": "tiger8-commonjs",
-  "version": "0.0.1",
-  "description": "a node.js module",
-  "keywords": [],
+  "version": "0.1.1",
+  "description": "tiger8 module for node.js-style commonjs implementation with Titanium 3.X",
+  "keywords": ["appcelerator","tiger8","alloy","commonjs","titanium"],
   "homepage": "git://github.com/tiger8/tiger8-commonjs",
   "bugs": {
     "url": "https://github.com/tiger8/tiger8-commonjs/issues",
