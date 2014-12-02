@@ -16,7 +16,7 @@
 
 ## Description 
 
-Node.js-style CommonJS in Appcelerator Titanium via Alloy. For full details on what exactly this means, check out Node.js's own [documentation on its CommonJS implementation](http://nodejs.org/api/modules.html). In addition to this added functionality, `ti-commonjs` also eliminates _all_ platform-specific disparities in Titanium's CommonJS implementation.
+Node.js-style CommonJS in Appcelerator Titanium via Alloy. For full details on what exactly this means, check out Node.js's own [documentation on its CommonJS implementation](http://nodejs.org/api/modules.html). In addition to this added functionality, `tiger8-commonjs` also eliminates _all_ platform-specific disparities in Titanium's CommonJS implementation.
 
 ## Requirements ![](http://img.shields.io/badge/titanium-3.2+-green.svg?style=flat) ![](http://img.shields.io/badge/alloy-1.3+-green.svg?style=flat)
 
@@ -113,7 +113,7 @@ You can now load JSON files simply with `require()`.
 ```js
 console.log(require('/package.json').main);
 
-// prints "./lib/ti-commonjs.js"
+// prints "./lib/tiger8-commonjs.js"
 ```
 
 ### require.resolve()
@@ -141,7 +141,7 @@ require('/foo') === require('/foo.js')
 
 ### "module" object
 
-Titanium's implementation gives limited access to the properties of the `module` object. With `ti-commonjs.js` you have full access to the following properties and functions. Full details [here](http://nodejs.org/api/modules.html#modules_the_module_object).
+Titanium's implementation gives limited access to the properties of the `module` object. With `tiger8-commonjs.js` you have full access to the following properties and functions. Full details [here](http://nodejs.org/api/modules.html#modules_the_module_object).
 
 * [module.exports](http://nodejs.org/api/modules.html#modules_module_exports)
 * [exports](http://nodejs.org/api/modules.html#modules_exports_alias)
@@ -184,7 +184,7 @@ var should = require('should/should'), // require the broswer-compatible version
 	_ = require('underscore');
 require('ti-mocha');
 
-describe('ti-commonjs', function() {
+describe('tiger8-commonjs', function() {
 	it('should work', function() {
 		_.each([1,2,3], function(num) {
 			num.should.equal(num);
@@ -194,16 +194,16 @@ describe('ti-commonjs', function() {
 mocha.run();
 ```
 
-### Should I use `ti-commonjs.js`?
+### Should I use `tiger8-commonjs.js`?
 
 #### cons
 
-* It will probably break your existing Titanium code. The primary reason for this is fundamental difference in specifying absolute paths with Titanium's `require()` vs. `ti-commonjs.js`. This example illustrates, assuming that a module exists at `Resources/foo/bar.js`:
+* It will probably break your existing Titanium code. The primary reason for this is fundamental difference in specifying absolute paths with Titanium's `require()` vs. `tiger8-commonjs.js`. This example illustrates, assuming that a module exists at `Resources/foo/bar.js`:
 ```js
 // This is how it's done with Titanium's require()
 require('foo/bar');
 
-// and this is how its done with ti-commonjs.js
+// and this is how its done with tiger8-commonjs.js
 require('/foo/bar');
 ```
 
@@ -218,14 +218,14 @@ require('/foo/bar');
 
 ### How does it work?
 
-`ti-commonjs.js` overides the existing Titanium `require()` to have node.js-style functionality. It sits directly on top of Titanium's existing module implementation so all module caching is preserved, no wheels are re-invented. It does this by invoking the main `ti-commonjs` function with the current `__dirname` then returns a curried function as the new `require()`.
+`tiger8-commonjs.js` overides the existing Titanium `require()` to have node.js-style functionality. It sits directly on top of Titanium's existing module implementation so all module caching is preserved, no wheels are re-invented. It does this by invoking the main `tiger8-commonjs` function with the current `__dirname` then returns a curried function as the new `require()`.
 
 To truly make the usage seamless, though, your generated Javascript files need a CommonJS wrapper, much like is done in the underlying engine itself. The wrapper looks like this:
 
 **app.js**
 ```js
 (function(_require,__dirname,__filename) {
-	var require = _require('ti-commonjs')(__dirname);
+	var require = _require('tiger8-commonjs')(__dirname);
 
 	// your code..
 
@@ -237,7 +237,7 @@ To truly make the usage seamless, though, your generated Javascript files need a
 Because you'd be conflicting with the `require` already in the scope of every module.
 
 ```js
-var require = require('ti-commonjs'); // CONFLICT with global require
+var require = require('tiger8-commonjs'); // CONFLICT with global require
 ```
 
 ### Why can't I just override `require()` in my app.js?
@@ -246,7 +246,7 @@ I should just be able to take advantage of Titanium's scoping with respect to th
 
 **app.js**
 ```js
-require = require('ti-commonjs');
+require = require('tiger8-commonjs');
 require('/1/2/3/threeModule')();
 ```
 
@@ -273,4 +273,4 @@ module.exports = function() {
 * `module.parent` and `module.children` cannot be supported since the underlying Titanium `require()` provides no means to get them or assign them to a module. To be able to support this, a change would be required in Titanium. Fortunately, these are rarely used.
 * `module.require` is not supported on Android. Details [here](https://github.com/tonylukasavage/ti-commonjs/issues/19).
 * This implementation does not load modules with the `.node` extension, as those are for node.js compiled addon modules, which make no sense in the context of Titanium.
-* `ti-commonjs.js` does not load from global folders (i.e., `$HOME/.node_modules`), as they are not relevant to mobile app distributions.
+* `tiger8-commonjs.js` does not load from global folders (i.e., `$HOME/.node_modules`), as they are not relevant to mobile app distributions.
