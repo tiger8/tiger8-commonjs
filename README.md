@@ -7,8 +7,8 @@
 
 **OK.  Here's the deal. ** [Tony Lukasavage](https://github.com/tonylukasavage "Tony Lukasavage") wrote an awesome commonjs module, [ti-commonjs](https://github.com/tonylukasavage/ti-commonjs "ti-commonjs"), for implementing commonjs inside an Appcelerator Titanium application.    There are only two changes to his module:  
 
-1.  The module is split into two different modules:  
-	- [genesis-commonjs](https://github.com/tiger8/genesis-commonjs "genesis-commonjs") -- A [ti-genesis](https://github.com/tiger8/genesis "ti-genesis") module for executing compile time tasks that need to happen
+1.  In order to work with the [tiger8](https://github.com/tiger8/tiger8 "tiger8") framework, we needed to control when this code was run and so the module was split into two different packages:  
+	- [genesis-commonjs](https://github.com/tiger8/genesis-commonjs "genesis-commonjs") -- A [ti-genesis](https://github.com/tiger8/genesis "ti-genesis") module for executing compile time tasks that need to happen.  
 	- [tiger8-commonjs](https://github.com/tiger8/tiger8-commonjs "tiger8-commonjs") (this module) -- A [tiger8](https://github.com/tiger8/tiger8 "tiger8") module with the code used at runtime
 2.	Some changes were made to the runtime code to get it to work with mobile web projects. 
 
