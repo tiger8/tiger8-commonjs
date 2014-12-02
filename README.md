@@ -1,11 +1,11 @@
-# tiger8-commonjs [![Build Status](https://travis-ci.org/tiger8/tiger8-commonjs.svg?branch=master)](https://travis-ci.org/tiger8/tiger8-commonjs) [![Appcelerator Titanium](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://www.appcelerator.com/titanium/alloy/) 
+# tiger8-commonjs [![Build Status](https://travis-ci.org/tiger8/tiger8-commonjs.svg?branch=master&style=flat)](https://travis-ci.org/tiger8/tiger8-commonjs) [![Appcelerator Titanium](http://www-static.appcelerator.com/badges/alloy-git-badge-sq.png)](http://www.appcelerator.com/titanium/alloy/) 
 
 
 <img align="right" width="200" height="200" src="https://avatars0.githubusercontent.com/u/9886051?v=3&s=200">
 
-> **ALPHA -- Here be dragons... **
+> **ALPHA -- Here be dragons...** 
 
-**OK.  Here's the deal. ** Tony Lukasavage wrote an awesome commonjs module, [ti-commonjs](https://github.com/tonylukasavage/ti-commonjs "ti-commonjs"), for implementing commonjs inside an Appcelerator Titanium application.    There are only two changes to his module:  
+**OK.  Here's the deal. ** [Tony Lukasavage](https://github.com/tonylukasavage "Tony Lukasavage") wrote an awesome commonjs module, [ti-commonjs](https://github.com/tonylukasavage/ti-commonjs "ti-commonjs"), for implementing commonjs inside an Appcelerator Titanium application.    There are only two changes to his module:  
 
 1.  The module is split into two different modules:  
 	- [genesis-commonjs](https://github.com/tiger8/genesis-commonjs "genesis-commonjs") -- A [ti-genesis](https://github.com/tiger8/genesis "ti-genesis") module for executing compile time tasks that need to happen
@@ -18,12 +18,30 @@
 
 Node.js-style CommonJS in Appcelerator Titanium via Alloy. For full details on what exactly this means, check out Node.js's own [documentation on its CommonJS implementation](http://nodejs.org/api/modules.html). In addition to this added functionality, `ti-commonjs` also eliminates _all_ platform-specific disparities in Titanium's CommonJS implementation.
 
+## Requirements ![](http://img.shields.io/badge/titanium-3.2+-green.svg?style=flat) ![](http://img.shields.io/badge/alloy-1.3+-green.svg?style=flat)
 
-## Install [![NPM version](https://badge.fury.io/js/tiger8-commonjs.svg)](http://badge.fury.io/js/tiger8-commonjs)
+* Titanium ➜ `npm install -g titanium` ➜ `ti sdk install`
+* Alloy ➜ `npm install -g alloy`
+
+It is distinctly possible that `tiger8-commonjs` will work with earlier versions of both Titanium and Alloy, but they are untested and unsupported.
+
+## Supports
+
+* Android emulator and device
+* iOS simulator and device
+* Mobile Web
+* 
+## Install [![NPM version](https://badge.fury.io/js/tiger8-commonjs.svg?style=flat)](http://badge.fury.io/js/tiger8-commonjs)
+
+*Assuming you're in your Alloy project's `app/lib` folder*
 
 ```bash
 $ npm install tiger8-commonjs
 ```
+[![NPM](https://nodei.co/npm/tiger8-commonjs.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/tiger8-commonjs/)
+
+Aside from installing `tiger8-commonjs`, this will also add the `alloy.jmk` file (or modifications to existing alloy.jmk) necessary to post-process your generated runtime files. Read [here](http://docs.appcelerator.com/titanium/latest/#!/guide/Build_Configuration_File_(alloy.jmk)) for more details on alloy.jmk files.
+
 
 ## Testing [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
@@ -34,31 +52,6 @@ $ grunt
 # create coverage report in ./coverage/index.html
 $ grunt coverage
 ```
-
-
-Node.js-style CommonJS in Appcelerator Titanium via Alloy. For full details on what exactly this means, check out Node.js's own [documentation on its CommonJS implementation](http://nodejs.org/api/modules.html). In addition to this added functionality, `ti-commonjs` also eliminates _all_ platform-specific disparities in Titanium's CommonJS implementation.
-
-## Requirements
-
-* [Titanium SDK 3.2+](http://www.appcelerator.com/titanium/titanium-sdk/)
-* Alloy 1.3+ ➜ `npm install -g alloy`
-
-It is distinctly possible that `ti-commonjs` will work with earlier versions of both Titanim and Alloy, but they are untested and unsupported.
-
-## Supports
-
-* Android emualtor and device
-* iOS simulator and device
-
-## Install [![NPM version](https://badge.fury.io/js/ti-commonjs.png)](http://badge.fury.io/js/ti-commonjs)
-
-Assuming you're in your Alloy project's root folder (not the `app` folder):
-
-```bash
-npm install ti-commonjs --prefix ./app/lib
-```
-
-Aside from installing `ti-commonjs`, this will also add the `alloy.jmk` file (or modifications to existing alloy.jmk) necessary to post-process your generated runtime files. Read [here](http://docs.appcelerator.com/titanium/latest/#!/guide/Build_Configuration_File_(alloy.jmk)) for more details on alloy.jmk files.
 
 ## Usage
 
@@ -170,7 +163,7 @@ require('/foo') === tirequire('foo')
 ## FAQ
 
 * [Why is this so cool?](#why-is-this-so-cool)
-* [Should I use ti-commonjs.js?](#should-i-use-ti-commonjsjs)
+* [Should I use tiger8-commonjs.js?](#should-i-use-tiger8-commonjsjs)
 * [How does it work?](#how-does-it-work)
 * Why is this solution so complicated?
 	* [Why can't I just create a new `require` variable?](#why-cant-i-just-create-a-new-require-variable)
